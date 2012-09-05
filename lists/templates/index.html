@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Lists{% endblock %}
+
+{% block main %}
+
+<div class="row-fluid">
+		<div class="span12">
+			<h2>Your Lists</h2>
+
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>List Name</th>
+						<th>Date Created</th>
+					</tr>
+				</thead>
+				<tbody>
+						{% for list in lists %}
+						<tr>
+    						<td><a href="{% url list_detail list.id %}">{{ list.name }}</a></td>
+    						<td>{{ list.pub_date|date:"F, d, Y" }}</td>
+    					</tr>
+    					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ list.name }}{% endblock %}
+
+{% block main %}
+<h1>{{ list.name }}</h1>
+{% if list.item_set.all %}
+	<ul>
+		{% for item in list.item_set.all %}
+	    	<li>{{ item.name }}</li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<p>Sorry, there isn't anything here.</p>
+	{% endif %}
+{% endblock %}
