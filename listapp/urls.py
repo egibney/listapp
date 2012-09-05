@@ -10,8 +10,9 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = patterns('',
-	#url(r'^lists/$', 'lists.views.index'),
-    # url(r'^$', 'listapp.views.home', name='home'),
+	# url(r'^lists/$', 'lists.views.index'),
+    url(r'^$', 'listapp.views.home', name='home'),
+    #url(r'^register$', 'listapp.views.register', name='register'),
     # url(r'^listapp/', include('listapp.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
