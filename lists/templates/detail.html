@@ -9,12 +9,13 @@
 		<div class="span12">
 			<h2>{{ list.name }}</h2>
 
-			<table class="table table-hover">
+			<table class="table table-hover table-bordered">
 				<thead>
 					<tr>
 						<th>Item #</th>
 						<th>List Name</th>
 						<th>Date Added</th>
+						<th>Options</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -22,22 +23,29 @@
 					{% if list.item_set.all %}
 						<ul>
 						{% for item in list.item_set.all %}
-	    					<tr>
+	    					<tr class="success">
 	    						<td>{{ item.id }}</td>
 	    						<td><a href="{{ item.url }}">{{ item.name }}</a></td>
 	    						<td>{{ item.pub_date|date:"F, d, Y" }}</td>
+	    						<td><a href="">Edit </a>| <a href="">Delete</a></td>
 	    					</tr>
 	    					
 						{% endfor %}
 						</ul>
 					{% else %}
-						<p>Sorry, there isn't anything here.</p>
+						<tr class="error">
+    						<td>Sorry, you have no items</td>
+    						<td></td>
+    						<td></td>
+    					</tr>
 					{% endif %}
 
 
 						
 				</tbody>
 			</table>
+			<a class="btn btn-primary" href=".../">Edit List</a>
+
 			<a class=btn href=".../">Back to Lists</a>
 		</div>
 

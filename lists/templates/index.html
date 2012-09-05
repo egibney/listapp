@@ -8,20 +8,28 @@
 		<div class="span12">
 			<h2>Your Lists</h2>
 
-			<table class="table table-hover">
+			<table class="table table-hover table-bordered">
 				<thead>
 					<tr>
 						<th>List Name</th>
 						<th>Date Created</th>
+						<th>Options</th>
 					</tr>
 				</thead>
 				<tbody>
+					{% if lists.all %}
 						{% for list in lists %}
-						<tr>
+						<tr class="success">
     						<td><a href="{% url list_detail list.id %}">{{ list.name }}</a></td>
     						<td>{{ list.pub_date|date:"F, d, Y" }}</td>
+    						<td><a href="">Edit </a>| <a href="">Delete</a></td>
     					</tr>
     					{% endfor %}
+    				{% else %}
+    					<tr class="error">
+    						<td>Sorry, you have no lists</td>
+    					</tr>
+    				{% endif %}
 				</tbody>
 			</table>
 		</div>
