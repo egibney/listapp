@@ -3,14 +3,44 @@
 {% block title %}{{ list.name }}{% endblock %}
 
 {% block main %}
-<h1>{{ list.name }}</h1>
-{% if list.item_set.all %}
-	<ul>
-		{% for item in list.item_set.all %}
-	    	<li>{{ item.name }}</li>
-		{% endfor %}
-	</ul>
-{% else %}
-	<p>Sorry, there isn't anything here.</p>
-	{% endif %}
+
+
+<div class="row-fluid">
+		<div class="span12">
+			<h2>{{ list.name }}</h2>
+
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Item #</th>
+						<th>List Name</th>
+						<th>Date Added</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					{% if list.item_set.all %}
+						<ul>
+						{% for item in list.item_set.all %}
+	    					<tr>
+	    						<td>{{ item.id }}</td>
+	    						<td><a href="{{ item.url }}">{{ item.name }}</a></td>
+	    						<td>{{ item.pub_date|date:"F, d, Y" }}</td>
+	    					</tr>
+	    					
+						{% endfor %}
+						</ul>
+					{% else %}
+						<p>Sorry, there isn't anything here.</p>
+					{% endif %}
+
+
+						
+				</tbody>
+			</table>
+			<a class=btn href=".../">Back to Lists</a>
+		</div>
+
+	</div>
 {% endblock %}
+
