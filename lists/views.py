@@ -22,3 +22,11 @@ def detail(request, id):
 		context,
 		context_instance=RequestContext(request)
 	)
+
+def create_list(request):
+	context = {"list": list}	
+	return render_to_response(
+		'create_list.html',
+		context,
+		context_instance=RequestContext(request)
+	)
