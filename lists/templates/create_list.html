@@ -8,27 +8,10 @@
 		<div class="row-fluid">
 			<div class="span12">
 				<form class="form-horizontal" id="createList" method='post' action=''>
-					<fieldset>
-
-						<legend>Create List</legend>
-
-						<div class="control-group">
-							<label class="control-label">List Name</label>
-							<div class="controls">
-								<input type="text" class="input-xlarge" id="list_name" name="list_name" rel="popover" data-content="Enter your list name." data-original-title="First Name">
-							</div>
-						</div>
-
-
-						<div class="control-group">
-							<label class="control-label"></label>
-							<div class="controls">
-								<button type="submit" class="btn btn-success" >Create List</button>
-								<a class="btn btn-warning" href="./">Cancel</a>
-							</div>
-						</div>
-
-					</fieldset>
+					{% csrf_token %}
+					<ul>{{ form.as_ul }}
+						<li><button type="submit" class="btn btn-success" >Create List</button></li>
+					</ul>
 				</form>
 
 			</div>

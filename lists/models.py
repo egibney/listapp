@@ -1,11 +1,14 @@
 from django.db import models
 
 class List(models.Model):
-	name = models.CharField(max_length=200)
-	pub_date = models.DateTimeField('date published')
+	name = models.CharField(max_length=200, blank=False)
+	pub_date = models.DateTimeField('date published', auto_now_add=True)
 
 	def __unicode__(self):
 		return "List: " + self.name
+
+	
+
 
 
 
@@ -17,6 +20,5 @@ class Item(models.Model):
 
 	def __unicode__(self):
 		return "Item: " + self.name
-
 
 

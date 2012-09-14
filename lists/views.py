@@ -1,7 +1,10 @@
 from lists.models import List, Item
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from lists.forms import ListForm
+from django.contrib import messages
+from django.core.urlresolvers import reverse
 
 def index(request):
 	lists = List.objects.all().order_by('-pub_date')[:5]
@@ -24,9 +27,17 @@ def detail(request, id):
 	)
 
 def create_list(request):
-	context = {"list": list}	
+	if request.method == 'POST':
+		form = ListForm(request.POST)
+		if form.is_valid():
+			form.save()
+			messages.add_message(request, messages.INFO, 'Congrats!')
+			return HttpResponseRedirect(reverse('list_index'))
+	else:
+		form = ListForm()
 	return render_to_response(
-		'create_list.html',
-		context,
+		'create_list.html', {
+			"form": form
+		},
 		context_instance=RequestContext(request)
 	)
